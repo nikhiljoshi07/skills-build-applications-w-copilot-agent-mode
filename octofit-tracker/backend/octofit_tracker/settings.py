@@ -80,14 +80,13 @@ WSGI_APPLICATION = "octofit_tracker.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.dummy",  # Dummy engine since pymongo is used directly
+        "ENGINE": "djongo",
+        "NAME": "octofit_db",
+        "ENFORCE_SCHEMA": False,  # Disable schema enforcement to avoid compatibility issues
+        "CLIENT": {
+            "host": "mongodb://localhost:27017/",
+        },
     }
-}
-
-# MongoDB connection settings
-MONGO_CLIENT = {
-    "host": "mongodb://localhost:27017/",
-    "db_name": "octofit_db",
 }
 
 
